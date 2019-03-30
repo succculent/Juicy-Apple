@@ -42,3 +42,15 @@ with io.open("rotten_apple_2.jpg", 'rb') as image_file:
 	print("rotten_apple_2:")
 	print(is_rotten(content))
 	print()
+
+with io.open("appleOrange.jpg", 'rb') as image_file:
+	content = image_file.read()
+	print("appleOrange.jpg:")
+	print(is_rotten(content))
+	print()
+
+with io.open("peach.jpg", 'rb') as image_file:
+	content = image_file.read()
+	print("peach:")
+	print(is_rotten(content))
+	print()
