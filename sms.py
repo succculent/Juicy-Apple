@@ -21,6 +21,3 @@ def sendi(r, n):  # r is rotten apples, n is total apples
     if ((r / n) > threshold):
         sendMsg("WARNING: In the latest batch there was a percentage of " +
                 str(100 * (r / n)) + "% rotten apples.")
-
-
-sendi(20, 100)

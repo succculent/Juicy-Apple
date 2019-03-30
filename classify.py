@@ -14,8 +14,7 @@ client = vision.ImageAnnotatorClient()
 
 def is_rotten(content):
     project_id = "juicy-apple"
-    #model_id = sys.argv[3]
-    model_id = ICN2381291597882699746
+    model_id = "ICN2381291597882699746"
     prediction_client = automl_v1beta1.PredictionServiceClient()
 
     name = 'projects/{}/locations/us-central1/models/{}'.format(
