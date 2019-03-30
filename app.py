@@ -1,15 +1,15 @@
-API_KEY="AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
-
+from google.cloud.automl_v1beta1.proto import service_pb2
+from google.cloud import automl_v1beta1
+from google.cloud.vision import types
+from google.cloud import vision
 from flask import Flask
+API_KEY = "AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
+
 app = Flask(__name__)
 
-from google.cloud import vision
-from google.cloud.vision import types
-
-from google.cloud import automl_v1beta1
-from google.cloud.automl_v1beta1.proto import service_pb2
 
 client = vision.ImageAnnotatorClient()
+
 
 def is_apple(content):
     image = types.Image(content=content)
@@ -26,9 +26,10 @@ def is_apple(content):
 
     return False
 
+
 @app.route("/")
 def hello():
     return "Hello World!"
 
-app.run(host='0.0.0.0')
 
+app.run(host='0.0.0.0')
