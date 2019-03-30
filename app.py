@@ -15,6 +15,7 @@ def classify():
     if is_apple(request.files['file']):
         if is_rotten(request.files['file']):
             return "OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!"
+        return "owo ur apple is bootyful"
     return "no u"
 
 
