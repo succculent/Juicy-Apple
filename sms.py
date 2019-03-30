@@ -7,16 +7,16 @@ auth_token = '8944858c7672456fe0d84e8e4b88510e'
 client = Client(account_sid, auth_token)
 
 def sendMsg(msg):
-	message = client.messages \
-					.create(
-						body=msg,
-						from_='19386665757',
-						to=manager_number
-					)
-	print(message.sid)
+    message = client.messages \
+                    .create(
+                        body=msg,
+                        from_='19386665757',
+                        to=manager_number
+                    )
+    print(message.sid)
 
 def sendi(r, n): #r is rotten apples, n is total apples
-	if ((r/n) > threshold):
-		sendMsg("WARNING: In the latest batch there was a percentage of " + str(100*(r/n)) + "% rotten apples.")
+    if ((r/n) > threshold):
+        sendMsg("WARNING: In the latest batch there was a percentage of " + str(100*(r/n)) + "% rotten apples.")
 
 sendi(20, 100)
