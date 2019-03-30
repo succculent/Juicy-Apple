@@ -14,8 +14,10 @@ def hello():
 @app.route("/classify", methods=['POST'])
 def classify():
     status = {}
+    print("test apple")
     if is_apple(request.files['file']):
         status['apple'] = 1
+        print("test rotten")
         if is_rotten(request.files['file']):
             status['rotten'] = 1
         else:
