@@ -1,6 +1,7 @@
 from flask import Flask, request
 from sms import sendi
 from classify import is_apple, is_rotten
+import JSON
 
 app = Flask(__name__)
 
@@ -12,11 +13,16 @@ def hello():
 
 @app.route("/classify", methods=['POST'])
 def classify():
+    status = {}
     if is_apple(request.files['file']):
+        status['apple'] = 1
         if is_rotten(request.files['file']):
-            return "OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!"
-        return "owo ur apple is bootyful"
-    return "no u"
+            status['rotten'] = 1
+        else:
+            status['rotten'] = 0
+    else:
+        status['apple'] = 0
+    return status
 
 
 app.run(host='0.0.0.0')
