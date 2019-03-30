@@ -22,7 +22,11 @@ def is_rotten(content):
     payload = {'image': {'image_bytes': content}}
     params = {}
     request = prediction_client.predict(name, payload, params)
-    return request  # waits till request is returned
+    for result in request.payload:
+        if(result.display_name == "rotten"):
+            return True
+    return False
+    #return request  # waits till request is returned
 
 
 def is_apple(content):
