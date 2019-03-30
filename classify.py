@@ -22,7 +22,7 @@ def is_rotten(content):
     payload = {'image': {'image_bytes': content}}
     params = {}
     request = prediction_client.predict(name, payload, params)
-    for result in request.paylod:
+    for result in request.payload:
         if(result.display_name == "rotten"):
             return True
     return False
