@@ -56,6 +56,9 @@ def hello():
 @app.route("/classify", methods=['POST'])
 def classify():
     status = {}
+    if 'file' not in request.files:
+        return jsonify({'success': 0})
+
     if is_apple(request.files['file']):
         status['apple'] = 1
         print("test rotten")
