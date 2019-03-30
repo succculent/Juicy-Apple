@@ -56,7 +56,6 @@ def hello():
 @app.route("/classify", methods=['POST'])
 def classify():
     status = {}
-    print(type(request.files['file']))
     if is_apple(request.files['file']):
         status['apple'] = 1
         print("test rotten")
@@ -66,7 +65,7 @@ def classify():
             status['rotten'] = 0
     else:
         status['apple'] = 0
-    return jsonify(status)
+    return type(request.files['file'])
 
 
 app.run(host='0.0.0.0')
