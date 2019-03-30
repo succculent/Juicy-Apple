@@ -1,37 +1,44 @@
-from classify.py import is_apple, is_rotten
+from classify import is_apple, is_rotten
+import io
 
-a = open(apple_logo.png)
-b = open(apple_w_background.jpg)
-c = open(car.jpg)
-d = open(cartoon_apple.jpg)
-e = open(pear.jpg)
-f = open(rotten_apple_1.jpg)
-g = open(rotten_apple_2.jpg)
+with io.open("apple_logo.png") as image_file:
+	content = image_file.read()
+	print("apple_logo:")
+	print(is_apple(content))
+	print()
 
-print("apple_logo:")
-print(is_apple(a))
-print()
+with io.open("apple_w_background.jpg") as image_file:
+	content = image_file.read()
+	print("apple_w_background:")
+	print(is_apple(content))
+	print()
 
-print("apple_w_background:")
-print(is_apple(b))
-print()
+with io.open("car.jpg") as image_file:
+	content = image_file.read()
+	print("car:")
+	print(is_apple(content))
+	print()
 
-print("car:")
-print(is_apple(c))
-print()
+with io.open("cartoon_apple.jpg") as image_file:
+	content = image_file.read()
+	print("cartoon_apple:")
+	print(is_apple(content))
+	print()
 
-print("cartoon_apple:")
-print(is_apple(d))
-print()
+with io.open("pear.jpg") as image_file:
+	content = image_file.read()
+	print("pear:")
+	print(is_apple(content))
+	print()
 
-print("pear:")
-print(is_apple(e))
-print()
+with io.open("rotten_apple_1.jpg") as image_file:
+	content = image_file.read()
+	print("rotten_apple_1:")
+	print(is_apple(content))
+	print()
 
-print("rotten_apple_1:")
-print(is_apple(f))
-print()
-
-print("rotten_apple_2:")
-print(is_apple(g))
-print()
+with io.open("rotten_apple_2.jpg") as image_file:
+	content = image_file.read()
+	print("rotten_apple_2:")
+	print(is_apple(content))
+	print()
