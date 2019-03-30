@@ -18,6 +18,14 @@ def open_image():
 	response = client.label_detection(image=image)
 	labels = response.label_annotations
 
+        is_apple = False
+
+        for label in labels:
+            if label.description == "Apple":
+                return True
+
+        return False
+
 @app.route("/")
 def hello():
 	return "Hello World!"
