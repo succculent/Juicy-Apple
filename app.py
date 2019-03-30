@@ -11,7 +11,7 @@ from google.cloud.automl_v1beta1.proto import service_pb2
 
 client = vision.ImageAnnotatorClient()
 
-def open_image:
+def open_image():
 	image = types.Image(content=content)
 
 	# Performs label detection on the image file
