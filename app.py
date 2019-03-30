@@ -20,18 +20,17 @@ def classify():
         return jsonify(status)
 
     status['success'] = 1
-    with io.open(request.files['file'].stream) as img:
-        content = img.read()
-        if is_apple(content):
-            status['apple'] = 1
-            print("test rotten")
-            if is_rotten(content):
-                status['rotten'] = 1
-            else:
-                status['rotten'] = 0
+    content = request.files['file'].read()
+    if is_apple(content):
+        status['apple'] = 1
+        print("test rotten")
+        if is_rotten(content):
+            status['rotten'] = 1
         else:
-            status['apple'] = 0
-        return jsonify(status)
+            status['rotten'] = 0
+    else:
+        status['apple'] = 0
+    return jsonify(status)
 
 
 app.run(host='0.0.0.0')
