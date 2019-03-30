@@ -1,7 +1,7 @@
 from flask import Flask, request
 from sms import sendi
 from classify import is_apple, is_rotten
-import JSON
+import json
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def classify():
             status['rotten'] = 0
     else:
         status['apple'] = 0
-    return status
+    return json.dumps(status)
 
 
 app.run(host='0.0.0.0')
