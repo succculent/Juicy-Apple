@@ -1,4 +1,4 @@
-API_KEY=AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo
+API_KEY="AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
 
 from flask import Flask
 app = Flask(__name__)
