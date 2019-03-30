@@ -11,16 +11,24 @@ from google.cloud.automl_v1beta1.proto import service_pb2
 
 client = vision.ImageAnnotatorClient()
 
-def open_image():
-	image = types.Image(content=content)
+def is_apple(content):
+    image = types.Image(content=content)
 
-	# Performs label detection on the image file
-	response = client.label_detection(image=image)
-	labels = response.label_annotations
+    # Performs label detection on the image file
+    response = client.label_detection(image=image)
+    labels = response.label_annotations
+
+    is_apple = False
+
+    for label in labels:
+        if label.description == "Apple":
+            return True
+
+    return False
 
 @app.route("/")
 def hello():
-	return "Hello World!"
+    return "Hello World!"
 
 app.run(host='0.0.0.0')
 
