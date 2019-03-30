@@ -1,7 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from sms import sendi
 from classify import is_apple, is_rotten
-import json
 
 app = Flask(__name__)
 
@@ -14,7 +13,6 @@ def hello():
 @app.route("/classify", methods=['POST'])
 def classify():
     status = {}
-    print("test apple")
     if is_apple(request.files['file']):
         status['apple'] = 1
         print("test rotten")
@@ -24,7 +22,7 @@ def classify():
             status['rotten'] = 0
     else:
         status['apple'] = 0
-    return json.dumps(status)
+    return jsonify(status)
 
 
 app.run(host='0.0.0.0')
