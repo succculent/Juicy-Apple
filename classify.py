@@ -10,7 +10,6 @@ API_KEY = "AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
 client = vision.ImageAnnotatorClient()
 
 def localize_objects(content):
-    from google.cloud import vision
     client = vision.ImageAnnotatorClient()
 
     image = vision.types.Image(content=content)
@@ -25,7 +24,7 @@ def localize_objects(content):
             for vertex in object_.bounding_poly.normalized_vertices:
                 a.append((vertex.x, vertex.y))
             o_v.append(a)
-    print(o_v)
+
     return (o_v)
 
 def is_rotten(content):
