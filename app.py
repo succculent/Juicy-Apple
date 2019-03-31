@@ -37,7 +37,7 @@ def classify():
                 temp['rotten'] = 0
         else:
             temp['supported'] = 0
-        temp.push(status['fruit'])
+        status['fruit'].append(temp)
 
         if r > 0:
             sendi(r, t)
