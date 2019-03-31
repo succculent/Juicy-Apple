@@ -42,11 +42,11 @@ def draw_hint(image_file):
     return im2
 
 
-def crop_to_hint(image_file):
+def crop_to_hint(path):
     """Crop the image using the hints in the vector list."""
-    vects = get_crop_hint(image_file)
+    vects = localize_objects(path)
 
-    im = Image.open(image_file)
+    im = Image.open(path)
     im2 = im.crop([vects[0].x, vects[0].y,
                   vects[2].x - 1, vects[2].y - 1])
     im2.save('output-crop.jpg', 'JPEG')
@@ -56,13 +56,13 @@ def crop_to_hint(image_file):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('image_file', help='The image you\'d like to crop.')
+    parser.add_argument('path', help='The image you\'d like to crop.')
     parser.add_argument('mode', help='Set to "crop" or "draw".')
     args = parser.parse_args()
 
     parser = argparse.ArgumentParser()
 
     if args.mode == 'crop':
-        crop_to_hint(args.image_file)
+        crop_to_hint(args.path)
     elif args.mode == 'draw':
-        draw_hint(args.image_file)
+        draw_hint(args.path)

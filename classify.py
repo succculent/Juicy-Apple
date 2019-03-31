@@ -36,7 +36,7 @@ def localize_objects(path):
             for vertex in object_.bounding_poly.normalized_vertices:
                 a.append((vertex.x, vertex.y))
             o_v.append(a)
-    print(o_v)
+    #print(o_v)
     return (o_v)
 
 def is_rotten(content):
