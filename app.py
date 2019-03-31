@@ -22,20 +22,22 @@ def classify():
     r = 0
     t = 0
     status['success'] = 1
-    status['fruit'] = [{}]
+    status['fruit'] = []
     images = crop_to_hint(request.files['file'].read())
-    for i in range(len(images)):
-        content = images[i].tobytes()
+    for i in images:
+        content = i.tobytes()
+        temp = {}
         if is_fruit(content):
             t += 1
-            status['fruit'][i]['supported'] = 1
+            temp['supported'] = 1
             if is_rotten(content):
-                status['fruit'][i]['rotten'] = 1
+                temp['rotten'] = 1
                 r += 1
             else:
-                status['fruit'][i]['rotten'] = 0
+                temp['rotten'] = 0
         else:
-            status['fruit'][i]['supported'] = 0
+            temp['supported'] = 0
+        temp.push(status['fruit'])
 
         if r > 0:
             sendi(r, t)
