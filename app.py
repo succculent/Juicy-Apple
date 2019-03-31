@@ -28,8 +28,9 @@ def classify():
     for im in images:
         temp = {}
         t += 1
-        i = b''
-        im.save(i)
+        i = io.BytesIO()
+        im.save(i, format='PNG')
+        i = i.getvalue()        
         if is_rotten(i):
             temp['rotten'] = 1
             r += 1
