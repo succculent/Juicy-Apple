@@ -51,7 +51,7 @@ def is_rotten(content):
     #return request  # waits till request is returned
 
 
-def is_apple(content):
+def is_fruit(content):
     image = types.Image(content=content)
 
     # Performs label detection on the image file
