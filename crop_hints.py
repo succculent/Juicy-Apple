@@ -32,7 +32,7 @@ from PIL import Image, ImageDraw
     vects = localize_objects(image_file)
     im = Image.open(image_file)
     draw = ImageDraw.Draw(im)
-    for i in range(0, vects.size()-1):
+    for i in range(0, vects.len()-1):
         draw.polygon([
             vects[i][0].x, vects[i][0].y,
             vects[i][1].x, vects[i][1].y,
@@ -55,7 +55,7 @@ def crop_to_hint(image_file):
     vects = localize_objects(image_file)
     im = Image.open(image_file)
     im_list = []
-    for i in range(0, vects.size()-1):
+    for i in range(0, vects.len()-1):
         im_list.append(im.crop([
             vects[i][0].x, vects[i][0].y,
             vects[i][1].x, vects[i][1].y,
@@ -73,5 +73,5 @@ if __name__ == '__main__':
 
     a = crop_to_hint(args.path)
 
-    for i in range(0, a.size()-1):
+    for i in range(0, a.len()-1):
         a[i].save(i.str() + ".jpg")
