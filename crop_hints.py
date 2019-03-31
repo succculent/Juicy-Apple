@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw
 
 def crop_to_hint(image_file):
     vects = localize_objects(image_file)
-    im = Image.open(image_file)
+    im = Image.open(io.BytesIO(image_file))
     im_list = []
     for i in range(0, len(vects)):
         x_, y_ = im.size
