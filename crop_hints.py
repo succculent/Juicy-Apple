@@ -56,9 +56,10 @@ def crop_to_hint(image_file):
     im = Image.open(image_file)
     im_list = []
     for i in range(0, len(vects)-1):
+        x_, y_ = i.shape
         im_list.append(im.crop([
-            vects[i][0][0], vects[i][0][1],
-            vects[i][0][0] + vects[i][2][0], vects[i][0][1] + vects[i][2][1]]))
+            vects[i][0][0]*x_, vects[i][0][1]*y_,
+            vects[i][2][0]*x_, vects[i][2][1]*y_]))
     return im_list
 
 if __name__ == '__main__':
@@ -71,4 +72,4 @@ if __name__ == '__main__':
 
     a = crop_to_hint(args.path)
     for i in range(0, len(a)):
-        a[i].save("ff.png")
+        a[i].save(str(i) + ".png")
