@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from sms import sendi
-from classify import is_rotten, is_fruit
+from classify import is_rotten
 import io
 from crop_hints import crop_to_hint
 
@@ -25,10 +25,9 @@ def classify():
     status['fruit'] = []
     images = crop_to_hint(request.files['file'].read())
     for i in images:
-        content = i.tobytes()
         temp = {}
         t += 1
-        if is_rotten(content):
+        if is_rotten(i.tobytes()):
             temp['rotten'] = 1
             r += 1
         else:

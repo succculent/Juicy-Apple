@@ -41,4 +41,3 @@ def is_rotten(content):
         if(result.display_name == "rotten"):
             return True
     return False
-    #return request  # waits till request is returned
