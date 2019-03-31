@@ -30,6 +30,7 @@ def classify():
             status['rotten'] = 0
     else:
         status['supported'] = 0
+    sendi(status['rotten'], 1)
     return jsonify(status)
 
 
