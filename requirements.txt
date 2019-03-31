@@ -1,2 +1,5 @@
 flask
 twilio
+
+google-cloud-vision==0.35.2
+pillow==5.4.1
