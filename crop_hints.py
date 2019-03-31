@@ -56,7 +56,7 @@ def crop_to_hint(image_file):
     im = Image.open(image_file)
     im_list = []
     for i in range(0, len(vects)-1):
-        x_, y_ = i.size()
+        x_, y_ = i.shape
         im_list.append(im.crop([
             vects[i][0][0]*x_, vects[i][0][1]*y_,
             vects[i][2][0]*x_, vects[i][2][1]*y_]))
