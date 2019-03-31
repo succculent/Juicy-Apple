@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from sms import sendi
 from classify import is_rotten, is_fruit
 import io
-
+from crop_hints import crop_to_hint
 
 app = Flask(__name__)
 
