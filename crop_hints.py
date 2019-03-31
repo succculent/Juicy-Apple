@@ -3,7 +3,7 @@ import io
 
 from google.cloud import vision
 from google.cloud.vision import types
-from PIL import Image, ImageDraw
+import Image, ImageDraw
 
 def get_crop_hint(path):
     """Detect crop hints on a single image and return the first result."""
