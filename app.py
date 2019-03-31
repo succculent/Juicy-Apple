@@ -22,7 +22,7 @@ def classify():
     r = 0
     t = 0
     status['success'] = 1
-    images = crop_to_hint(
+    images = crop_to_hint(request.files['file'].read())
     for content in range(len(images)):
         if is_fruit(images[content]):
             t += 1
