@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from sms import sendi
-from classify import is_rotten, is_apple
+from classify import is_rotten, is_fruit
 import io
 
 
@@ -21,15 +21,15 @@ def classify():
 
     status['success'] = 1
     content = request.files['file'].read()
-    if is_apple(content):
-        status['apple'] = 1
+    if is_fruit(content):
+        status['supported'] = 1
         print("test rotten")
         if is_rotten(content):
             status['rotten'] = 1
         else:
             status['rotten'] = 0
     else:
-        status['apple'] = 0
+        status['supported'] = 0
     return jsonify(status)
 
 

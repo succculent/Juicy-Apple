@@ -26,10 +26,10 @@ def is_rotten(content):
         if(result.display_name == "rotten"):
             return True
     return False
-    #return request  # waits till request is returned
+    # return request  # waits till request is returned
 
 
-def is_apple(content):
+def is_fruit(content):
     image = types.Image(content=content)
 
     # Performs label detection on the image file
@@ -37,7 +37,7 @@ def is_apple(content):
     labels = response.label_annotations
 
     for label in labels:
-        if label.description == "Apple":
+        if label.description == "Apple" or label.description == "Banana" or label.description == "Orange":
             return True
 
     return False
