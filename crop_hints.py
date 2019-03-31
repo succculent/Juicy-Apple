@@ -39,7 +39,7 @@ def draw_hint(image_file):
         vects[3].x, vects[3].y], None, 'red')
     im.save('output-hint.jpg', 'JPEG')
     print('Saved new image to output-crop.jpg')
-    # return im2
+    return im2
 
 
 def crop_to_hint(image_file):
@@ -51,7 +51,7 @@ def crop_to_hint(image_file):
                   vects[2].x - 1, vects[2].y - 1])
     im2.save('output-crop.jpg', 'JPEG')
     print('Saved new image to output-crop.jpg')
-    #return im2
+    return im2
 
 
 if __name__ == '__main__':
