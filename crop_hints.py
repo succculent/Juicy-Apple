@@ -37,8 +37,8 @@ def draw_hint(image_file):
         vects[1].x, vects[1].y,
         vects[2].x, vects[2].y,
         vects[3].x, vects[3].y], None, 'red')
-    # im.save('output-hint.jpg', 'JPEG')
-    # print('Saved new image to output-crop.jpg')
+    im.save('output-hint.jpg', 'JPEG')
+    print('Saved new image to output-crop.jpg')
     return im2
 
 
@@ -49,8 +49,8 @@ def crop_to_hint(image_file):
     im = Image.open(image_file)
     im2 = im.crop([vects[0].x, vects[0].y,
                   vects[2].x - 1, vects[2].y - 1])
-    # im2.save('output-crop.jpg', 'JPEG')
-    # print('Saved new image to output-crop.jpg')
+    im2.save('output-crop.jpg', 'JPEG')
+    print('Saved new image to output-crop.jpg')
     return im2
 
 
