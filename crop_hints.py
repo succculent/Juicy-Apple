@@ -6,7 +6,7 @@ from google.cloud import vision
 from google.cloud.vision import types
 from PIL import Image, ImageDraw
 
-def get_crop_hint(path):
+'''def get_crop_hint(path):
     """Detect crop hints on a single image and return the first result."""
     client = vision.ImageAnnotatorClient()
 
@@ -25,35 +25,43 @@ def get_crop_hint(path):
     vertices = hints[0].bounding_poly.vertices
 
     return vertices
+'''
 
-
-def draw_hint(image_file):
+'''def draw_hint(image_file):
     """Draw a border around the image using the hints in the vector list."""
-    vects = get_crop_hint(image_file)
-
+    vects = localize_objects(image_file)
     im = Image.open(image_file)
     draw = ImageDraw.Draw(im)
-    draw.polygon([
-        vects[0].x, vects[0].y,
-        vects[1].x, vects[1].y,
-        vects[2].x, vects[2].y,
-        vects[3].x, vects[3].y], None, 'red')
-    im.save('output-hint.jpg', 'JPEG')
-    print('Saved new image to output-crop.jpg')
-    return im2
-
-
-def crop_to_hint(path):
+    for i in range(0, vects.len()-1):
+        draw.polygon([
+            vects[i][0].x, vects[i][0].y,
+            vects[i][1].x, vects[i][1].y,
+            vects[i][2].x, vects[i][2].y,
+            vects[i][3].x, vects[i][3].y], None, 'red')
+    return im
+'''
+def crop_to_hint(image_file):
     """Crop the image using the hints in the vector list."""
-    vects = localize_objects(path)
+    '''vects = localize_objects(image_file)
 
-    im = Image.open(path)
+    im = Image.open(image_file)
     im2 = im.crop([vects[0].x, vects[0].y,
                   vects[2].x - 1, vects[2].y - 1])
     im2.save('output-crop.jpg', 'JPEG')
     print('Saved new image to output-crop.jpg')
     return im2
+    '''
 
+    vects = localize_objects(image_file)
+    im = Image.open(image_file)
+    im_list = []
+    for i in range(0, len(vects)-1):
+        im_list.append(im.crop([
+            vects[i][0][0], vects[i][0][1],
+            vects[i][1][0], vects[i][1][1],
+            vects[i][2][0], vects[i][2][1],
+            vects[i][3][0], vects[i][3][1]]))
+    return im_list
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -63,7 +71,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    if args.mode == 'crop':
-        crop_to_hint(args.path)
-    elif args.mode == 'draw':
-        draw_hint(args.path)
+    a = crop_to_hint(args.path)
+
+    for i in range(0, len(a)-1):
+        a[i].save(i.str() + ".jpg")
