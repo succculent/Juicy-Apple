@@ -11,7 +11,7 @@ API_KEY = "AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
 # python predict.py YOUR_LOCAL_IMAGE_FILE juicy-apple ICN2381291597882699746
 client = vision.ImageAnnotatorClient()
 
-def localize_objects(path):
+def localize_objects(content):
     """Localize objects in the local image.
 
     Args:
@@ -20,8 +20,6 @@ def localize_objects(path):
     from google.cloud import vision
     client = vision.ImageAnnotatorClient()
 
-    with open(path, 'rb') as image_file:
-        content = image_file.read()
     image = vision.types.Image(content=content)
 
     objects = client.object_localization(

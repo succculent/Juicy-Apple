@@ -19,19 +19,25 @@ def classify():
         status['success'] = 0
         return jsonify(status)
 
+    r = 0
+    t = 0
     status['success'] = 1
-    content = request.files['file'].read()
-    if is_fruit(content):
-        status['supported'] = 1
-        print("test rotten")
-        if is_rotten(content):
-            status['rotten'] = 1
+    images = crop_to_hint(
+    for content in range(len(images)):
+        if is_fruit(images[content]):
+            t += 1
+            status[content]['supported'] = 1
+            if is_rotten(images[content]):
+                status[content]['rotten'] = 1
+                r += 1
+            else:
+                status[content]['rotten'] = 0
         else:
-            status['rotten'] = 0
-    else:
-        status['supported'] = 0
-    if 'rotten' in status.keys():
-        sendi(status['rotten'], 1)
+            status[content]['supported'] = 0
+
+        if r > 0:
+            sendi(r, t)
+
     return jsonify(status)
 
 
