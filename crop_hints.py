@@ -55,7 +55,7 @@ def crop_to_hint(image_file):
     vects = localize_objects(image_file)
     im = Image.open(image_file)
     im_list = []
-    for i in range(0, len(vects)-1):
+    for i in range(0, len(vects)-1): #something
         im_list.append(im.crop([
             vects[i][0][0], vects[i][0][1],
             vects[i][1][0], vects[i][2][1]]))
@@ -74,5 +74,5 @@ if __name__ == '__main__':
 
     a = crop_to_hint(args.path)
 
-    for i in range(0, len(a)-1):
-        a[i].save(i.str() + ".jpg")
+    for i in range(0, len(a)-1): #something
+        a[i].save(str(i) + ".jpg")
