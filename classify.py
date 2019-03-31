@@ -26,16 +26,17 @@ def localize_objects(path):
 
     objects = client.object_localization(
         image=image).localized_object_annotations
-    o_v = ()
+    o_v = []
     print('Number of objects found: {}'.format(len(objects)))
     for object_ in objects:
         print('\n{} (confidence: {})'.format(object_.name, object_.score))
         print('Normalized bounding polygon vertices: ')
         if ((object_.name == "Apple") or (object_.name == "Orange") or (object_.name == "Banana")):
-            a = ()
+            a = []
             for vertex in object_.bounding_poly.normalized_vertices:
                 a.insert((vertex.x, vertex.y))
             o_v.insert(a)
+    return (o_v)
 
 def is_rotten(content):
     project_id = "juicy-apple"
