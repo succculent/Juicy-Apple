@@ -34,8 +34,8 @@ def localize_objects(path):
         if ((object_.name == "Apple") or (object_.name == "Orange") or (object_.name == "Banana")):
             a = []
             for vertex in object_.bounding_poly.normalized_vertices:
-                a.insert((vertex.x, vertex.y))
-            o_v.insert(a)
+                a.append((vertex.x, vertex.y))
+            o_v.append(a)
     return (o_v)
 
 def is_rotten(content):
