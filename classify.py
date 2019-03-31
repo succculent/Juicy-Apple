@@ -5,8 +5,6 @@ from google.cloud.automl_v1beta1.proto import service_pb2
 from google.cloud.vision import types
 from google.cloud import vision
 
-API_KEY = "AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
-
 client = vision.ImageAnnotatorClient()
 
 def localize_objects(content):
@@ -28,8 +26,8 @@ def localize_objects(content):
     return (o_v)
 
 def is_rotten(content):
-    project_id = "juicy-apple"
-    model_id = "ICN2990947079068165734"
+    project_id = ""
+    model_id = ""
     prediction_client = automl_v1beta1.PredictionServiceClient()
 
     name = 'projects/{}/locations/us-central1/models/{}'.format(

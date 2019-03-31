@@ -30,7 +30,8 @@ def classify():
         t += 1
         i = io.BytesIO()
         im.save(i, format='PNG')
-        i = i.getvalue()        
+        i = i.getvalue()
+        temp['supported'] = 1        
         if is_rotten(i):
             temp['rotten'] = 1
             r += 1
