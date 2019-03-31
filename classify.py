@@ -19,7 +19,7 @@ def localize_objects(content):
     o_v = []
 
     for object_ in objects:
-        if ((object_.name == "Apple") or (object_.name == "Orange") or (object_.name == "Banana")):
+        if object_.name == "Fruit":
             a = []
             for vertex in object_.bounding_poly.normalized_vertices:
                 a.append((vertex.x, vertex.y))
