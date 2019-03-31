@@ -57,10 +57,10 @@ def crop_to_hint(image_file):
     im_list = []
     for i in range(0, len(vects)-1):
         im_list.append(im.crop([
-            vects[i][0].x, vects[i][0].y,
-            vects[i][1].x, vects[i][1].y,
-            vects[i][2].x, vects[i][2].y,
-            vects[i][3].x, vects[i][3].y]))
+            vects[i][0][0], vects[i][0][1],
+            vects[i][1][0], vects[i][1][1],
+            vects[i][2][0], vects[i][2][1],
+            vects[i][3][0], vects[i][3][1]]))
     return im_list
 
 if __name__ == '__main__':
