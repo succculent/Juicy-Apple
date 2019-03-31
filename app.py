@@ -3,6 +3,7 @@ from sms import sendi
 from classify import is_rotten
 import io
 from crop_hints import crop_to_hint
+from PIL import Image, ImageDraw
 
 app = Flask(__name__)
 
@@ -24,10 +25,10 @@ def classify():
     status['success'] = 1
     status['fruit'] = []
     images = crop_to_hint(request.files['file'].read())
-    for i in images:
+    for im in images:
         temp = {}
         t += 1
-        if is_rotten(i.tobytes()):
+        if is_rotten(im.tobytes()):
             temp['rotten'] = 1
             r += 1
         else:
