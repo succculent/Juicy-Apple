@@ -19,10 +19,11 @@ def localize_objects(content):
     o_v = []
 
     for object_ in objects:
-        a = []
-        for vertex in object_.bounding_poly.normalized_vertices:
-            a.append((vertex.x, vertex.y))
-        o_v.append(a)
+        if object_.name == "Fruit":
+            a = []
+            for vertex in object_.bounding_poly.normalized_vertices:
+                a.append((vertex.x, vertex.y))
+            o_v.append(a)
 
     return (o_v)
 
@@ -41,17 +42,3 @@ def is_rotten(content):
             return True
     return False
     #return request  # waits till request is returned
-
-
-def is_fruit(content):
-    image = types.Image(content=content)
-
-    # Performs label detection on the image file
-    response = client.label_detection(image=image)
-    labels = response.label_annotations
-
-    for label in labels:
-        if label.description == "Fruit":
-            return True
-
-    return False

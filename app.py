@@ -27,16 +27,12 @@ def classify():
     for i in images:
         content = i.tobytes()
         temp = {}
-        if is_fruit(content):
-            t += 1
-            temp['supported'] = 1
-            if is_rotten(content):
-                temp['rotten'] = 1
-                r += 1
-            else:
-                temp['rotten'] = 0
+        t += 1
+        if is_rotten(content):
+            temp['rotten'] = 1
+            r += 1
         else:
-            temp['supported'] = 0
+            temp['rotten'] = 0
         status['fruit'].append(temp)
 
         if r > 0:
