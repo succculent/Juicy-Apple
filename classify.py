@@ -7,16 +7,9 @@ from google.cloud import vision
 
 API_KEY = "AIzaSyB1g5SVzfrZqzNQc_7HzJEJFzrnFG_kJEo"
 
-# To exectue the request:
-# python predict.py YOUR_LOCAL_IMAGE_FILE juicy-apple ICN2381291597882699746
 client = vision.ImageAnnotatorClient()
 
 def localize_objects(content):
-    """Localize objects in the local image.
-
-    Args:
-    path: The path to the local file.
-    """
     from google.cloud import vision
     client = vision.ImageAnnotatorClient()
 
@@ -25,16 +18,14 @@ def localize_objects(content):
     objects = client.object_localization(
         image=image).localized_object_annotations
     o_v = []
-    #print('Number of objects found: {}'.format(len(objects)))
+
     for object_ in objects:
-        #print('\n{} (confidence: {})'.format(object_.name, object_.score))
-        #print('Normalized bounding polygon vertices: ')
         if ((object_.name == "Apple") or (object_.name == "Orange") or (object_.name == "Banana")):
             a = []
             for vertex in object_.bounding_poly.normalized_vertices:
                 a.append((vertex.x, vertex.y))
             o_v.append(a)
-    #print(o_v)
+    print(o_v)
     return (o_v)
 
 def is_rotten(content):
